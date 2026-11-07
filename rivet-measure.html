@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RIVET | طريقة أخذ المقاسات</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMxYTFhMWEiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOS4zLDU0LjkpIHNjYWxlKDAuMDI2KSI+PHBhdGggZmlsbD0iI2YyZjJmMiIgZD0iTTc4IDBWLTE3NjBINjE4UTc1MyAtMTc2MCA4MjIuMCAtMTY5OC41UTg5MSAtMTYzNyA5MTQuNSAtMTUyNi41UTkzOCAtMTQxNiA5MzggLTEyNjdROTM4IC0xMTIzIDkwMS41IC0xMDM3LjBRODY1IC05NTEgNzY0IC05MThRODQ3IC05MDEgODgwLjUgLTgzNS41UTkxNCAtNzcwIDkxNCAtNjY2VjBINTY3Vi02ODlRNTY3IC03NjYgNTM1LjUgLTc4NC41UTUwNCAtODAzIDQzNCAtODAzVjBaTTQzNiAtMTEwOEg1MjFRNTk0IC0xMTA4IDU5NCAtMTI2N1E1OTQgLTEzNzAgNTc4LjAgLTE0MDIuMFE1NjIgLTE0MzQgNTE4IC0xNDM0SDQzNloiLz48L2c+PHJlY3QgeD0iOSIgeT0iMzEiIHdpZHRoPSI0NiIgaGVpZ2h0PSI0IiBmaWxsPSIjOTY1NTE5Ii8+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f1ee; --card:#ffffff; --text:#1a1a1a; --muted:#5b5b5b; --border:#dcd8d2; --field:#ffffff;
+  --accent:#965519; --on-accent:#ffffff; --plate:#8d8d8d; --plate-hi:#b9b9b9; --ruler:#d6d6d6; --tick:#1a1a1a;
+  --danger:#b3261e;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1a1a1a; --card:#262626; --text:#f2f2f2; --muted:#c4c4c4; --border:#3a3a3a; --field:#1f1f1f;
+    --plate:#585858; --plate-hi:#7c7c7c; --ruler:#c4c4c4; --danger:#ff8a80;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1a1a1a; --card:#262626; --text:#f2f2f2; --muted:#c4c4c4; --border:#3a3a3a; --field:#1f1f1f;
+  --plate:#585858; --plate-hi:#7c7c7c; --ruler:#c4c4c4; --danger:#ff8a80;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Cairo',system-ui,'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.6;-webkit-text-size-adjust:100%}
+.wrap{max-width:580px;margin:0 auto;padding:20px 16px 40px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.logo{display:block;height:40px;width:auto;color:var(--text);overflow:visible}
+.hi{color:var(--muted);font-weight:600;font-size:18px}
+h1{font-size:34px;font-weight:900;text-align:center;margin:6px 0 0;line-height:1.3}
+.sub{text-align:center;color:var(--muted);margin:2px 0 20px;font-size:17px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:16px;margin-bottom:14px}
+.sh{display:flex;gap:12px;align-items:flex-start}
+.badge{flex:none;width:44px;height:44px;border-radius:12px;background:var(--accent);color:var(--on-accent);font-family:'Anton',Impact,sans-serif;font-size:26px;display:flex;align-items:center;justify-content:center;direction:ltr}
+.sh h2{margin:0;font-size:22px;font-weight:900;line-height:1.3}
+.sh p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.ill{margin-top:10px}
+.ill svg{width:100%;height:auto;display:block}
+.plate{fill:var(--plate)} .plateh{fill:var(--plate-hi)} .ruler{fill:var(--ruler)} .tick{stroke:var(--tick);stroke-width:1.6;fill:none}
+.ac{stroke:var(--accent);stroke-width:4;fill:none;stroke-linecap:round} .acf{fill:var(--accent)} .acs{stroke:var(--accent);stroke-width:3;fill:none}
+.dash{stroke-dasharray:6 5;stroke-width:2.5}
+.t{font-family:'Cairo',system-ui,sans-serif;fill:var(--text)} .t.b{font-weight:900} .t.mu,.mu{fill:var(--muted)} .or{fill:var(--accent)}
+.num{font-family:'Anton',Impact,sans-serif;fill:var(--muted)} .num.dk{fill:var(--tick)} .num.or{fill:var(--accent)}
+.formcard h2{margin:0 0 4px;font-size:24px;font-weight:900}
+.hint{color:var(--muted);font-size:15px;margin:0 0 14px}
+label,.lbl{display:block;font-weight:700;margin:12px 0 6px;font-size:16px}
+input[type=text],select{width:100%;font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--border);background:var(--field);color:var(--text)}
+input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.radios{display:flex;gap:10px}
+.radios label{position:relative;flex:1;margin:0;border:1.5px solid var(--border);border-radius:12px;padding:11px 12px;text-align:center;cursor:pointer;font-weight:700;background:var(--field)}
+.radios input{position:absolute;opacity:0;pointer-events:none}
+.radios label:has(input:checked){background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.radios label:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.group{border:1.5px dashed var(--border);border-radius:14px;padding:12px;margin-top:12px}
+.group h3{margin:0 0 4px;font-size:17px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
+.link{background:none;border:0;color:var(--muted);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline;padding:4px}
+.add{margin-top:12px;width:100%;background:none;border:1.5px solid var(--accent);color:var(--text);border-radius:12px;padding:11px;font:inherit;font-weight:700;cursor:pointer}
+.err{color:var(--danger);font-size:14px;margin-top:4px;min-height:0}
+input[aria-invalid=true],select[aria-invalid=true]{border-color:var(--danger)}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:900;font-size:20px;padding:15px;border-radius:14px}
+.btn:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+.note{margin:12px 0 0;color:var(--muted);font-size:15px;text-align:center}
+details{margin-top:14px;font-size:15px}
+summary{cursor:pointer;color:var(--muted)}
+pre{white-space:pre-wrap;word-break:break-word;background:var(--field);border:1px solid var(--border);border-radius:12px;padding:12px;font:inherit;font-size:15px;margin:8px 0 0}
+.foot{text-align:center;margin-top:24px;padding-top:16px;border-top:3px solid var(--accent);font-weight:700}
+.foot small{display:block;font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:20px;color:var(--muted);margin-top:4px;direction:ltr;letter-spacing:1px}
+
+.tabs{display:flex;gap:6px;background:var(--field);border:1px solid var(--border);padding:4px;border-radius:14px;margin:12px 0 16px}
+.tabs button{flex:1;font:inherit;font-weight:900;font-size:16px;padding:11px 8px;border:0;border-radius:10px;background:transparent;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--accent);color:var(--on-accent)}
+.tabs button:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper button.sb,.stepper button.cb,.stepper button.sb2{width:46px;height:46px;border-radius:12px;border:1.5px solid var(--accent);background:var(--field);color:var(--text);font:inherit;font-size:28px;font-weight:900;cursor:pointer;touch-action:manipulation;line-height:1;padding:0;user-select:none}
+.stepper button:disabled,.stepper input:disabled{opacity:.4;cursor:not-allowed}
+.stepper input{width:92px;text-align:center;font-weight:900;font-size:19px;padding:9px 6px}
+.go{background:var(--accent);color:var(--on-accent);border:0;border-radius:12px;padding:0 18px;height:48px;font:inherit;font-weight:900;font-size:17px;cursor:pointer;margin-inline-start:auto}
+.tip{font-size:14.5px;margin:12px 0 0}
+.stackwrap{background:var(--field);border:1px solid var(--border);border-radius:16px;padding:12px 8px;margin-top:10px}
+.srow{display:grid;grid-template-columns:28px 1fr 78px;align-items:center;gap:6px;min-height:24px;margin-bottom:2px}
+.sidx{font-family:'Anton',Impact,sans-serif;color:var(--muted);text-align:center;font-size:14px;direction:ltr}
+.sarea{display:flex;justify-content:center;align-items:center}
+.plateb{position:relative;border:0;padding:0;border-radius:4px;background:var(--plate);box-shadow:inset 0 2px 0 var(--plate-hi);cursor:pointer;display:block;touch-action:manipulation}
+.plateb::before{content:"";position:absolute;inset:-5px 0}
+.plateb::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:44%;transform:translate(-50%,-50%);border-radius:3px;background:var(--field)}
+.plateb[aria-pressed=true]{outline:3px solid var(--accent);outline-offset:2px}
+.plateb.unset{background:transparent;box-shadow:none;border:2px dashed var(--muted)}
+.plateb:focus-visible{outline:3px solid var(--text);outline-offset:2px}
+.sdim{font-size:12.5px;color:var(--muted);direction:ltr;text-align:left;white-space:nowrap}
+.panel{position:sticky;bottom:10px;z-index:5;background:var(--card);border:2px solid var(--accent);border-radius:18px;padding:12px;margin-top:12px;box-shadow:0 8px 28px rgba(0,0,0,.28)}
+.ptop{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.psel{font-weight:900;font-size:15px}.more{margin-top:2px}.more summary{font-size:14px}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.pl{font-weight:700;font-size:16px;min-width:54px}
+.pbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.mini{font:inherit;font-size:14px;font-weight:700;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border);background:var(--field);color:var(--text);cursor:pointer}
+.mini[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.range{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.range input{width:58px;padding:8px 6px;text-align:center;font-size:15px}
+.sumbox{margin-top:16px;border:1px solid var(--border);border-radius:16px;padding:12px 14px;background:var(--field)}
+.sumbox h3{margin:0 0 6px;font-size:18px;font-weight:900}
+.sumbox ul{list-style:none;margin:0;padding:0}
+.sumbox li{padding:7px 0;border-top:1px solid var(--border);font-size:15px;display:flex;justify-content:space-between;gap:8px}
+.sumbox li:first-child{border-top:0}
+.sumbox .v{font-weight:900;direction:ltr;white-space:nowrap}
+.sumbox .warn{color:var(--danger);font-weight:700}
+.muted{color:var(--muted);font-size:14px;margin:8px 0 0}
+.center{text-align:center}
+
+
+.mtabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;align-items:center}
+.mtabs button{font:inherit;font-weight:900;font-size:15px;padding:9px 14px;border-radius:12px;border:1.5px solid var(--border);background:var(--field);color:var(--text);cursor:pointer}
+.mtabs button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.mtabs .add2{border-style:dashed;border-color:var(--accent)}
+.mtabs .rem{font-size:14px;color:var(--muted);width:100%}
+.callout{display:flex;justify-content:flex-end;font-weight:900;font-size:15px;margin-top:6px}
+.callout span{color:var(--accent);margin-inline-end:6px}
+.qn{font-family:'Anton',Impact,sans-serif;font-size:22px;min-width:40px;text-align:center;direction:ltr}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(150,85,25,.6)}70%{box-shadow:0 0 0 12px rgba(150,85,25,0)}100%{box-shadow:0 0 0 0 rgba(150,85,25,0)}}
+@media (prefers-reduced-motion:no-preference){#bstart{animation:pulse 1.8s infinite}}
+
+.upl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.upl .mini{font-size:15px;padding:10px 14px}
+.withpic .plateb{background-image:var(--pic);background-repeat:no-repeat}
+.withpic .plateb.unset{background-color:transparent}
+.picctl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.picctl .mini{font-size:15px;padding:9px 12px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span class="hi">أهلاً بالكباتن</span><svg class="logo" viewBox="0 -1780 4154 1800" role="img" aria-label="RIVET" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M78 0V-1760H618Q753 -1760 822.0 -1698.5Q891 -1637 914.5 -1526.5Q938 -1416 938 -1267Q938 -1123 901.5 -1037.0Q865 -951 764 -918Q847 -901 880.5 -835.5Q914 -770 914 -666V0H567V-689Q567 -766 535.5 -784.5Q504 -803 434 -803V0ZM436 -1108H521Q594 -1108 594 -1267Q594 -1370 578.0 -1402.0Q562 -1434 518 -1434H436Z M1058 0V-1760H1398V0Z M1720 0 1503 -1761H1838L1967 -563L2082 -1761H2417L2200 0Z M2539 0V-1760H3243V-1420H2897V-1077H3229V-746H2897V-343H3266V0Z M3553 0V-1422H3344V-1760H4114V-1422H3905V0Z"/><rect class="ln" x="-30" y="-924" width="4214" height="90" style="fill:var(--accent)"/></svg></div>
+  <h1>طريقة أخذ المقاسات</h1>
+  <p class="sub">الموضوع بسيط خالص</p>
+
+  <section class="card step"><div class="sh"><span class="badge">1</span><div><h2>قيس عرض البلاطة</h2><p>حط المتر على طرف البلاطة بالظبط واقرأ الرقم عند الطرف التاني</p></div></div><div class="ill"><svg viewBox="0 0 600 240" role="img" aria-label="رسمة قياس عرض البلاطة بالمتر"><rect class="plate" x="90" y="10" width="360" height="28" rx="4"/><rect class="plate" x="90" y="44" width="360" height="28" rx="4"/><rect class="plate" x="90" y="78" width="360" height="28" rx="4"/><text class="t b" x="540" y="30" text-anchor="middle" font-size="20">البلاطة</text><path class="ac" d="M500 24 H462"/><path class="acf" d="M452 24 l12 -7 v14 z"/><path class="ac dash" d="M90 112 V178 M450 112 V178"/><path class="ac" d="M104 152 H436"/><path class="acf" d="M90 152 l16 -9 v18 z M450 152 l-16 -9 v18 z"/><text class="t b" x="270" y="140" text-anchor="middle" font-size="22">العرض</text><rect class="ruler" x="50" y="178" width="440" height="50" rx="3"/><path class="tick" d="M90.0 178 v22"/><text class="num dk" x="90.0" y="216" text-anchor="middle" font-size="14">0</text><path class="tick" d="M93.6 178 v8"/><path class="tick" d="M97.2 178 v8"/><path class="tick" d="M100.8 178 v8"/><path class="tick" d="M104.4 178 v8"/><path class="tick" d="M108.0 178 v14"/><path class="tick" d="M111.6 178 v8"/><path class="tick" d="M115.2 178 v8"/><path class="tick" d="M118.8 178 v8"/><path class="tick" d="M122.4 178 v8"/><path class="tick" d="M126.0 178 v22"/><text class="num dk" x="126.0" y="216" text-anchor="middle" font-size="14">1</text><path class="tick" d="M129.6 178 v8"/><path class="tick" d="M133.2 178 v8"/><path class="tick" d="M136.8 178 v8"/><path class="tick" d="M140.4 178 v8"/><path class="tick" d="M144.0 178 v14"/><path class="tick" d="M147.6 178 v8"/><path class="tick" d="M151.2 178 v8"/><path class="tick" d="M154.8 178 v8"/><path class="tick" d="M158.4 178 v8"/><path class="tick" d="M162.0 178 v22"/><text class="num dk" x="162.0" y="216" text-anchor="middle" font-size="14">2</text><path class="tick" d="M165.6 178 v8"/><path class="tick" d="M169.2 178 v8"/><path class="tick" d="M172.8 178 v8"/><path class="tick" d="M176.4 178 v8"/><path class="tick" d="M180.0 178 v14"/><path class="tick" d="M183.6 178 v8"/><path class="tick" d="M187.2 178 v8"/><path class="tick" d="M190.8 178 v8"/><path class="tick" d="M194.4 178 v8"/><path class="tick" d="M198.0 178 v22"/><text class="num dk" x="198.0" y="216" text-anchor="middle" font-size="14">3</text><path class="tick" d="M201.6 178 v8"/><path class="tick" d="M205.2 178 v8"/><path class="tick" d="M208.8 178 v8"/><path class="tick" d="M212.4 178 v8"/><path class="tick" d="M216.0 178 v14"/><path class="tick" d="M219.6 178 v8"/><path class="tick" d="M223.2 178 v8"/><path class="tick" d="M226.8 178 v8"/><path class="tick" d="M230.4 178 v8"/><path class="tick" d="M234.0 178 v22"/><text class="num dk" x="234.0" y="216" text-anchor="middle" font-size="14">4</text><path class="tick" d="M237.6 178 v8"/><path class="tick" d="M241.2 178 v8"/><path class="tick" d="M244.8 178 v8"/><path class="tick" d="M248.4 178 v8"/><path class="tick" d="M252.0 178 v14"/><path class="tick" d="M255.6 178 v8"/><path class="tick" d="M259.2 178 v8"/><path class="tick" d="M262.8 178 v8"/><path class="tick" d="M266.4 178 v8"/><path class="tick" d="M270.0 178 v22"/><text class="num dk" x="270.0" y="216" text-anchor="middle" font-size="14">5</text><path class="tick" d="M273.6 178 v8"/><path class="tick" d="M277.2 178 v8"/><path class="tick" d="M280.8 178 v8"/><path class="tick" d="M284.4 178 v8"/><path class="tick" d="M288.0 178 v14"/><path class="tick" d="M291.6 178 v8"/><path class="tick" d="M295.2 178 v8"/><path class="tick" d="M298.8 178 v8"/><path class="tick" d="M302.4 178 v8"/><path class="tick" d="M306.0 178 v22"/><text class="num dk" x="306.0" y="216" text-anchor="middle" font-size="14">6</text><path class="tick" d="M309.6 178 v8"/><path class="tick" d="M313.2 178 v8"/><path class="tick" d="M316.8 178 v8"/><path class="tick" d="M320.4 178 v8"/><path class="tick" d="M324.0 178 v14"/><path class="tick" d="M327.6 178 v8"/><path class="tick" d="M331.2 178 v8"/><path class="tick" d="M334.8 178 v8"/><path class="tick" d="M338.4 178 v8"/><path class="tick" d="M342.0 178 v22"/><text class="num dk" x="342.0" y="216" text-anchor="middle" font-size="14">7</text><path class="tick" d="M345.6 178 v8"/><path class="tick" d="M349.2 178 v8"/><path class="tick" d="M352.8 178 v8"/><path class="tick" d="M356.4 178 v8"/><path class="tick" d="M360.0 178 v14"/><path class="tick" d="M363.6 178 v8"/><path class="tick" d="M367.2 178 v8"/><path class="tick" d="M370.8 178 v8"/><path class="tick" d="M374.4 178 v8"/><path class="tick" d="M378.0 178 v22"/><text class="num dk" x="378.0" y="216" text-anchor="middle" font-size="14">8</text><path class="tick" d="M381.6 178 v8"/><path class="tick" d="M385.2 178 v8"/><path class="tick" d="M388.8 178 v8"/><path class="tick" d="M392.4 178 v8"/><path class="tick" d="M396.0 178 v14"/><path class="tick" d="M399.6 178 v8"/><path class="tick" d="M403.2 178 v8"/><path class="tick" d="M406.8 178 v8"/><path class="tick" d="M410.4 178 v8"/><path class="tick" d="M414.0 178 v22"/><text class="num dk" x="414.0" y="216" text-anchor="middle" font-size="14">9</text><path class="tick" d="M417.6 178 v8"/><path class="tick" d="M421.2 178 v8"/><path class="tick" d="M424.8 178 v8"/><path class="tick" d="M428.4 178 v8"/><path class="tick" d="M432.0 178 v14"/><path class="tick" d="M435.6 178 v8"/><path class="tick" d="M439.2 178 v8"/><path class="tick" d="M442.8 178 v8"/><path class="tick" d="M446.4 178 v8"/><path class="tick" d="M450.0 178 v22"/><text class="num dk" x="450.0" y="216" text-anchor="middle" font-size="14">10</text></svg></div></section><section class="card step"><div class="sh"><span class="badge">2</span><div><h2>قيس سمك البلاطة</h2><p>قيس بلاطة واحدة بس، من تحت لفوق</p></div></div><div class="ill"><svg viewBox="0 0 600 230" role="img" aria-label="رسمة قياس سمك البلاطة"><rect class="ruler" x="70" y="30" width="50" height="190" rx="3"/><path class="tick" d="M120 190 h-18"/><text class="num dk" x="86" y="195" text-anchor="middle" font-size="14">0</text><path class="tick" d="M120 166 h-18"/><text class="num dk" x="86" y="171" text-anchor="middle" font-size="14">1</text><path class="tick" d="M120 142 h-18"/><text class="num dk" x="86" y="147" text-anchor="middle" font-size="14">2</text><path class="tick" d="M120 118 h-18"/><text class="num dk" x="86" y="123" text-anchor="middle" font-size="14">3</text><path class="tick" d="M120 94 h-18"/><text class="num dk" x="86" y="99" text-anchor="middle" font-size="14">4</text><path class="tick" d="M120 70 h-18"/><text class="num dk" x="86" y="75" text-anchor="middle" font-size="14">5</text><path class="tick" d="M120 46 h-18"/><text class="num dk" x="86" y="51" text-anchor="middle" font-size="14">6</text><path class="tick" d="M120 178.0 h-10"/><path class="tick" d="M120 154.0 h-10"/><path class="tick" d="M120 130.0 h-10"/><path class="tick" d="M120 106.0 h-10"/><path class="tick" d="M120 82.0 h-10"/><path class="tick" d="M120 58.0 h-10"/><rect class="plate" x="190" y="94" width="250" height="96" rx="4"/><path class="ac dash" d="M120 190 H190 M120 94 H190"/><path class="ac" d="M500 108 V176"/><path class="acf" d="M500 94 l-8 15 h16 z M500 190 l-8 -15 h16 z"/><path class="ac" d="M488 94 h24 M488 190 h24"/><text class="t b" x="552" y="149.0" text-anchor="middle" font-size="22">السمك</text></svg></div></section><section class="card step"><div class="sh"><span class="badge">3</span><div><h2>عدّ البلاطات في الجهاز</h2><p>عدّ كل البلاطات، وابعتلنا صورة للجهاز للتأكد</p></div></div><div class="ill"><svg viewBox="0 0 600 250" role="img" aria-label="رسمة عد البلاطات"><rect class="plate" x="260" y="10" width="220" height="22" rx="3"/><text class="num mu" x="244" y="27" text-anchor="end" font-size="16">1</text><rect class="plate" x="260" y="38" width="220" height="22" rx="3"/><text class="num mu" x="244" y="55" text-anchor="end" font-size="16">2</text><rect class="plate" x="260" y="66" width="220" height="22" rx="3"/><text class="num mu" x="244" y="83" text-anchor="end" font-size="16">3</text><rect class="plate" x="260" y="94" width="220" height="22" rx="3"/><text class="num mu" x="244" y="111" text-anchor="end" font-size="16">4</text><rect class="plate" x="260" y="122" width="220" height="22" rx="3"/><text class="num mu" x="244" y="139" text-anchor="end" font-size="16">5</text><rect class="plate" x="260" y="150" width="220" height="22" rx="3"/><text class="num mu" x="244" y="167" text-anchor="end" font-size="16">6</text><rect class="plate" x="260" y="178" width="220" height="22" rx="3"/><text class="num mu" x="244" y="195" text-anchor="end" font-size="16">7</text><rect class="plate" x="260" y="206" width="220" height="22" rx="3"/><text class="num or" x="244" y="223" text-anchor="end" font-size="16">8</text><path class="ac" d="M494 10 H510 V232 H494 M510 121 H532"/><circle class="acs" cx="560" cy="121" r="26"/><text class="t b" x="560" y="132" text-anchor="middle" font-size="30">؟</text><rect class="phone" x="60" y="10" width="90" height="170" rx="16"/><rect class="plate" x="72" y="32" width="66" height="104" rx="2"/><rect class="plateh" x="80" y="46" width="50" height="14" rx="2"/><rect class="plateh" x="80" y="74" width="50" height="14" rx="2"/><rect class="plateh" x="80" y="102" width="50" height="14" rx="2"/><circle class="acf" cx="105" cy="158" r="6"/><text class="t mu" x="105" y="212" text-anchor="middle" font-size="17">صورة للجهاز</text></svg></div></section><section class="card step"><div class="sh"><span class="badge">4</span><div><h2>بلاطات مختلفة في الجهاز؟</h2><p>قيس كل نوع لوحده، وقولنا عددهم ومكانهم (فوق / نص / تحت)</p></div></div><div class="ill"><svg viewBox="0 0 600 270" role="img" aria-label="رسمة بلاطات مختلفة في الجهاز"><rect class="plate" x="90.0" y="10" width="280" height="24" rx="3"/><rect class="acs" x="87.0" y="7" width="286" height="30" rx="5"/><text class="num or" x="72" y="27.0" text-anchor="end" font-size="15">1</text><rect class="plate" x="90.0" y="42" width="280" height="24" rx="3"/><rect class="acs" x="87.0" y="39" width="286" height="30" rx="5"/><text class="num or" x="72" y="59.0" text-anchor="end" font-size="15">2</text><rect class="plate" x="110.0" y="74" width="240" height="18" rx="3"/><text class="num mu" x="72" y="88.0" text-anchor="end" font-size="15">3</text><rect class="plate" x="110.0" y="100" width="240" height="18" rx="3"/><text class="num mu" x="72" y="114.0" text-anchor="end" font-size="15">4</text><rect class="plate" x="130.0" y="126" width="200" height="12" rx="3"/><rect class="acs" x="127.0" y="123" width="206" height="18" rx="5"/><text class="num or" x="72" y="137.0" text-anchor="end" font-size="15">5</text><rect class="plate" x="130.0" y="146" width="200" height="12" rx="3"/><rect class="acs" x="127.0" y="143" width="206" height="18" rx="5"/><text class="num or" x="72" y="157.0" text-anchor="end" font-size="15">6</text><rect class="plate" x="110.0" y="166" width="240" height="18" rx="3"/><text class="num mu" x="72" y="180.0" text-anchor="end" font-size="15">7</text><rect class="plate" x="110.0" y="192" width="240" height="18" rx="3"/><text class="num mu" x="72" y="206.0" text-anchor="end" font-size="15">8</text><path class="ac" d="M392 10 H404 V66 H392 M404 38.0 H420"/><text class="t b" x="500" y="34.0" text-anchor="middle" font-size="20">في الأول</text><text class="t mu" x="500" y="56.0" text-anchor="middle" font-size="14">2 بلاطة مختلفة</text><path class="ac" d="M392 126 H404 V158 H392 M404 142.0 H420"/><text class="t b" x="500" y="138.0" text-anchor="middle" font-size="20">في النص</text><text class="t mu" x="500" y="160.0" text-anchor="middle" font-size="14">2 بلاطة مختلفة</text></svg></div></section>
+
+  <section class="card formcard" id="form">
+    <h2>ابعتلنا مقاسات جهازك</h2>
+    <p class="hint">اختار الطريقة اللي تريحك، والاتنين بيوصلونا على واتساب.</p>
+    <div class="tabs" role="tablist" aria-label="طريقة إرسال المقاسات">
+      <button type="button" role="tab" id="tab-b" aria-selected="true" aria-controls="pane-b">ارسم جهازك</button>
+      <button type="button" role="tab" id="tab-f" aria-selected="false" aria-controls="pane-f">اكتب المقاسات</button>
+    </div>
+
+    <div id="pane-b" role="tabpanel" aria-labelledby="tab-b">
+      <p class="hint" style="margin-bottom:8px">ابدأ بعدد البلاطات، وبعدين اظبط شكل جهازك بالظبط زي ما هو قدامك.</p>
+      <div id="mtabs" class="mtabs"></div>
+      <div class="sumbox" id="qtybox" style="margin-top:6px">
+        <div class="prow" style="margin:0"><span class="pl" style="min-width:0">كام جهاز بنفس المقاس ده؟</span>
+          <div class="stepper"><button type="button" class="sb2" data-q="-1" aria-label="قلل عدد الأجهزة">−</button><span class="qn" id="qn">1</span><button type="button" class="sb2" data-q="1" aria-label="زوّد عدد الأجهزة">+</button></div></div>
+        <p class="muted" style="margin:6px 0 0">لو عندك أكتر من جهاز بنفس المقاس دوس +. ولو في جهاز بمقاس مختلف دوس (+ جهاز بمقاس مختلف) فوق.</p>
+        <button type="button" class="link hide" id="rmM">شيل الجهاز ده</button>
+      </div>
+      <div class="lbl">كام بلاطة في الجهاز؟</div>
+      <div class="stepper">
+        <button type="button" class="cb" data-c="-1" aria-label="قلل العدد">−</button>
+        <input type="text" id="bcount" inputmode="numeric" value="10" aria-label="عدد البلاطات">
+        <button type="button" class="cb" data-c="1" aria-label="زوّد العدد">+</button>
+        <button type="button" class="go" id="bstart">ارسم الجهاز</button>
+      </div>
+      <div class="callout" id="callout"><span>↑</span> بعد ما تحدد عدد البلاطات، اضغط هنا</div>
+      <div class="err" id="e-b"></div>
+
+      <div id="bbuild" class="hide">
+        <p class="hint tip">رقم 1 هو أعلى بلاطة. في الأول كل البلاطات متحددة، فاظبط المقاس الأساسي، وبعدها دوس على البلاطة المختلفة وعدّل عرضها وسمكها.</p>
+        <div class="upl"><button type="button" class="mini" id="picbtn">جرّب صورتك على الجهاز</button><button type="button" class="link hide" id="picx">شيل الصورة</button><input type="file" id="pic" accept="image/*" class="hide"></div>
+        <div class="err" id="e-pic"></div>
+        <p class="muted hide" id="picnote">دي معاينة تقريبية بس. الصورة بتتعرض على جهازك ومش بتتبعت لأي حد، فابعتها لنا في الواتساب بعد الرسالة.</p>
+        <div class="picctl hide" id="picctl" role="group" aria-label="التحكم في الصورة"><button type="button" class="mini" data-p="zi">تكبير +</button><button type="button" class="mini" data-p="zo">تصغير −</button><button type="button" class="mini" data-p="up">↑ طلّع</button><button type="button" class="mini" data-p="dn">↓ نزّل</button><button type="button" class="mini" data-p="lf">← شمال</button><button type="button" class="mini" data-p="rt">→ يمين</button><button type="button" class="mini" data-p="rs">رجّع</button></div>
+        <div class="stackwrap" id="stack"></div>
+
+        <div class="panel" id="panel">
+          <div class="ptop"><div class="psel" id="psel"></div><button type="button" class="mini" id="selall">حدد الكل</button></div>
+          <div class="prow"><span class="pl">العرض</span>
+            <div class="stepper"><button type="button" class="sb" data-k="w" data-d="-1" aria-label="قلل العرض">−</button><input type="text" id="iw" inputmode="decimal" aria-label="عرض البلاطة"><button type="button" class="sb" data-k="w" data-d="1" aria-label="زوّد العرض">+</button></div></div>
+          <div class="prow"><span class="pl">السمك</span>
+            <div class="stepper"><button type="button" class="sb" data-k="t" data-d="-1" aria-label="قلل السمك">−</button><input type="text" id="it" inputmode="decimal" aria-label="سمك البلاطة"><button type="button" class="sb" data-k="t" data-d="1" aria-label="زوّد السمك">+</button></div></div>
+          <details class="more"><summary>تحديد أكتر من بلاطة</summary>
+            <div class="pbtns"><button type="button" class="mini" id="multi" aria-pressed="false">تحديد متعدد (دوس على أكتر من بلاطة)</button></div>
+            <div class="range">أو حدد من <input type="text" id="rfrom" inputmode="numeric" aria-label="من بلاطة رقم"> إلى <input type="text" id="rto" inputmode="numeric" aria-label="إلى بلاطة رقم"> <button type="button" class="mini" id="rgo">حدد</button></div>
+          </details>
+        </div>
+
+        <div class="sumbox">
+          <h3>ملخص جهازك</h3>
+          <ul id="sumlist"></ul>
+          <p class="muted" id="sumtot"></p>
+        </div>
+
+        <label for="bname">اسمك (اختياري)</label>
+        <input type="text" id="bname" autocomplete="name">
+
+        <a class="btn" id="bsend" href="https://wa.me/201140245079" target="_blank" rel="noopener">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.2-.4.700-1.300.1-.2 0-.3 0-.5l-.8-1.800c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.200c0 1.300.9 2.500 1 2.700.1.200 1.800 2.800 4.400 3.900 1.600.7 2.200.7 3 .6.500-.1 1.500-.6 1.700-1.200.2-.6.2-1.100.2-1.200-.1-.1-.2-.2-.5-.3z"/></svg>
+          <span>ابعت على واتساب</span>
+        </a>
+        <div class="err center" id="e-ball"></div>
+        <p class="note">بعد ما الواتساب يفتح، ابعت الرسالة، وبعدها ابعت صورة للجهاز في نفس المحادثة.</p>
+        <details><summary>شوف الرسالة قبل ما تبعتها</summary><pre id="bprev"></pre></details>
+        <p class="center"><button type="button" class="link" id="breset">ابدأ من جديد</button></p>
+      </div>
+    </div>
+
+    <div id="pane-f" role="tabpanel" aria-labelledby="tab-f" class="hide">
+
+    <label for="name">اسمك (اختياري)</label>
+    <input type="text" id="name" autocomplete="name">
+
+    <label for="count">عدد البلاطات في الجهاز</label>
+    <input type="text" id="count" inputmode="numeric" placeholder="مثال: 20">
+    <div class="err" id="e-count"></div>
+
+    <div class="row2">
+      <div><label for="width">عرض البلاطة</label><input type="text" id="width" inputmode="decimal" placeholder="مثال: 43"><div class="err" id="e-width"></div></div>
+      <div><label for="thick">سمك البلاطة</label><input type="text" id="thick" inputmode="decimal" placeholder="مثال: 1.9"><div class="err" id="e-thick"></div></div>
+    </div>
+
+    <div class="lbl">في بلاطات مختلفة في العرض أو السمك؟</div>
+    <div class="radios">
+      <label><input type="radio" name="diff" value="no" checked>لا</label>
+      <label><input type="radio" name="diff" value="yes">آه</label>
+    </div>
+
+    <div id="groups" class="hide">
+      <div id="glist"></div>
+      <button type="button" class="add" id="addg">+ أضف مجموعة تانية</button>
+    </div>
+
+    <a class="btn" id="send" href="https://wa.me/201140245079" target="_blank" rel="noopener">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.2-.4.700-1.300.1-.2 0-.3 0-.5l-.8-1.800c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.200c0 1.300.9 2.500 1 2.700.1.200 1.800 2.800 4.400 3.900 1.600.7 2.200.7 3 .6.500-.1 1.500-.6 1.700-1.200.2-.6.2-1.100.2-1.200-.1-.1-.2-.2-.5-.3z"/></svg>
+      <span>ابعت على واتساب</span>
+    </a>
+    <div class="err" id="e-all" style="text-align:center"></div>
+    <p class="note">بعد ما الواتساب يفتح، ابعت الرسالة، وبعدها ابعت صورة للجهاز في نفس المحادثة.</p>
+
+    <details><summary>شوف الرسالة قبل ما تبعتها</summary><pre id="preview"></pre></details>
+    </div>
+  </section>
+
+  <div class="foot">شكراً جداً.. وإن شاء الله في تعامل مستمر<small>RIVET.eg</small></div>
+</div>
+
+<script>
+(function(){
+  var PHONE='201140245079';
+  var $=function(id){return document.getElementById(id)};
+  var groups=[{n:'',pos:'في الأول',w:'',t:''}];
+
+  function norm(v){
+    return String(v||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)})
+      .replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)})
+      .replace(/[٫,،]/g,'.').replace(/\s+/g,'').trim();
+  }
+  function isNum(v){return /^\d+(\.\d+)?$/.test(v) && parseFloat(v)>0}
+  function isInt(v){return /^\d+$/.test(v) && parseInt(v,10)>0}
+  function isDiff(){return document.querySelector('input[name=diff]:checked').value==='yes'}
+
+  function renderGroups(){
+    var h='';
+    groups.forEach(function(g,i){
+      h+='<div class="group" data-i="'+i+'"><h3><span>مجموعة '+(i+1)+'</span>'+(groups.length>1?'<button type="button" class="link" data-del="'+i+'">شيلها</button>':'')+'</h3>'+
+      '<div class="row2"><div><label>عدد البلاطات</label><input type="text" inputmode="numeric" data-k="n" value="'+g.n+'"></div>'+
+      '<div><label>مكانها</label><select data-k="pos">'+['في الأول','في النص','في الآخر'].map(function(p){return '<option'+(p===g.pos?' selected':'')+'>'+p+'</option>'}).join('')+'</select></div></div>'+
+      '<div class="row2"><div><label>العرض</label><input type="text" inputmode="decimal" data-k="w" value="'+g.w+'"></div>'+
+      '<div><label>السمك</label><input type="text" inputmode="decimal" data-k="t" value="'+g.t+'"></div></div></div>';
+    });
+    $('glist').innerHTML=h;
+  }
+
+  function build(){
+    var L=[];
+    var nm=$('name').value.trim();
+    L.push('أهلاً RIVET، دي مقاسات جهازي:');
+    if(nm) L.push('الاسم: '+nm);
+    L.push('عدد البلاطات: '+norm($('count').value));
+    L.push('عرض البلاطة: '+norm($('width').value)+' سم');
+    L.push('سمك البلاطة: '+norm($('thick').value)+' سم');
+    if(isDiff()){
+      L.push('في بلاطات مختلفة: آه');
+      groups.forEach(function(g,i){
+        L.push('- مجموعة '+(i+1)+': '+norm(g.n)+' بلاطة '+g.pos+'، عرضها '+norm(g.w)+' سم وسمكها '+norm(g.t)+' سم');
+      });
+    } else {
+      L.push('في بلاطات مختلفة: لا');
+    }
+    L.push('هبعت صورة الجهاز بعد الرسالة دي.');
+    return L.join('\n');
+  }
+  function setErr(id,msg,inputEl){
+    $(id).textContent=msg||'';
+    if(inputEl) inputEl.setAttribute('aria-invalid',msg?'true':'false');
+  }
+  function validate(show){
+    var c=norm($('count').value),w=norm($('width').value),t=norm($('thick').value);
+    var r1=isInt(c),r2=isNum(w),r3=isNum(t);
+    if(show){
+      setErr('e-count',r1?'':'اكتب عدد البلاطات (رقم صحيح)',$('count'));
+      setErr('e-width',r2?'':'اكتب العرض بالأرقام',$('width'));
+      setErr('e-thick',r3?'':'اكتب السمك بالأرقام',$('thick'));
+    }
+    var ok=r1&&r2&&r3;
+    if(isDiff()){
+      var inputs=$('glist').querySelectorAll('.group');
+      groups.forEach(function(g,i){
+        var good=isInt(norm(g.n))&&isNum(norm(g.w))&&isNum(norm(g.t));
+        if(show){
+          inputs[i].querySelectorAll('input').forEach(function(el){
+            var k=el.getAttribute('data-k'); var v=norm(el.value);
+            var bad=(k==='n')?!isInt(v):!isNum(v);
+            el.setAttribute('aria-invalid',bad?'true':'false');
+          });
+        }
+        if(!good) ok=false;
+      });
+    }
+    return ok;
+  }
+  function refresh(){
+    var msg=build();
+    $('preview').textContent=msg;
+    $('send').href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg);
+  }
+  $('pane-f').addEventListener('input',function(e){
+    var el=e.target;
+    if(el.closest('#glist')){
+      var i=parseInt(el.closest('.group').getAttribute('data-i'),10);
+      groups[i][el.getAttribute('data-k')]=el.value;
+    }
+    refresh();
+  });
+  $('pane-f').addEventListener('change',function(e){
+    var el=e.target;
+    if(el.name==='diff'){
+      $('groups').classList.toggle('hide',!isDiff());
+      if(isDiff()) renderGroups();
+    }
+    if(el.closest('#glist')&&el.tagName==='SELECT'){
+      var i=parseInt(el.closest('.group').getAttribute('data-i'),10);
+      groups[i].pos=el.value;
+    }
+    refresh();
+  });
+  $('pane-f').addEventListener('click',function(e){
+    var del=e.target.getAttribute&&e.target.getAttribute('data-del');
+    if(del!==null&&del!==undefined&&e.target.classList.contains('link')){
+      groups.splice(parseInt(del,10),1); renderGroups(); refresh(); return;
+    }
+    if(e.target.id==='addg'){
+      groups.push({n:'',pos:'في النص',w:'',t:''}); renderGroups(); refresh(); return;
+    }
+  });
+  $('send').addEventListener('click',function(e){
+    if(!validate(true)){
+      e.preventDefault();
+      $('e-all').textContent='كمّل الخانات الناقصة الأول وبعدين ابعت.';
+      var bad=$('pane-f').querySelector('[aria-invalid=true]'); if(bad) bad.focus();
+      return;
+    }
+    $('e-all').textContent='';
+    refresh();
+  });
+  renderGroups(); refresh();
+})();
+(function(){
+  var PHONE='201140245079';
+  var $=function(id){return document.getElementById(id)};
+  var DEF={w:40,t:2}, LIM={w:[5,150],t:[0.3,15]}, STEP={w:0.5,t:0.1}, MAXN=80;
+  var IMG=null;
+  function newM(){return {plates:[],sel:{},multi:false,started:false,qty:1}}
+  var S=newM(), machines=[S], cur=0, T=1, MAXT=20;
+  function withM(m,fn){var s=S;S=m;try{return fn()}finally{S=s}}
+  function sumQty(skip){var s=0;machines.forEach(function(m,i){if(i!==skip)s+=m.qty});return s}
+  function remaining(){return 0}
+  function norm(v){
+    return String(v||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)})
+      .replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)})
+      .replace(/[٫,،]/g,'.').replace(/\s+/g,'').trim();
+  }
+  function r1(n){return Math.round(n*10)/10}
+  function fmt(n){return String(r1(n))}
+  function clampK(k,v){return Math.min(LIM[k][1],Math.max(LIM[k][0],r1(v)))}
+  function idxs(){return Object.keys(S.sel).map(Number).sort(function(a,b){return a-b})}
+  function isSet(p){return p.w!=null&&p.t!=null}
+  function readCount(){var v=parseInt(norm($('bcount').value),10);return isNaN(v)?0:v}
+  function selectAll(){S.sel={};S.plates.forEach(function(_,i){S.sel[i]=true})}
+  function runs(){
+    var out=[];
+    S.plates.forEach(function(p,i){
+      var l=out[out.length-1];
+      if(l&&l.w===p.w&&l.t===p.t){l.to=i+1}else{out.push({from:i+1,to:i+1,w:p.w,t:p.t})}
+    });
+    return out;
+  }
+  function pw(c){return c===2?'بلاطتين':(c>=3&&c<=10?'بلاطات':'بلاطة')}
+  function posWord(r,n){return r.from===1?'في الأول':(r.to===n?'في الآخر':'في النص')}
+  function rangeLabel(r){return r.from===r.to?('بلاطة '+r.from):('البلاطات '+r.from+' – '+r.to)}
+  function renderStack(){
+    var wrap=$('stack'); var prev=wrap.offsetHeight; if(prev) wrap.style.minHeight=prev+'px';
+    var maxW=DEF.w; S.plates.forEach(function(p){if(p.w!=null&&p.w>maxW)maxW=p.w});
+    var ref=Math.max(50,maxW*1.05), h='';
+    S.plates.forEach(function(p,i){
+      var w=p.w==null?DEF.w:p.w, t=p.t==null?DEF.t:p.t, uns=!isSet(p);
+      var ht=Math.max(14,Math.round(t*12)), pc=(w/ref*100).toFixed(1);
+      h+='<div class="srow"><span class="sidx">'+(i+1)+'</span><div class="sarea"><button type="button" class="plateb'+(uns?' unset':'')+'" data-i="'+i+'" aria-pressed="'+(S.sel[i]?'true':'false')+'" aria-label="بلاطة '+(i+1)+'" style="width:'+pc+'%;height:'+ht+'px"></button></div><span class="sdim">'+(uns?'—':fmt(p.w)+' × '+fmt(p.t))+'</span></div>';
+    });
+    wrap.innerHTML=h; applyImg();
+    requestAnimationFrame(function(){wrap.style.minHeight=''});
+  }
+  function applyImg(){
+    var wrap=$('stack'), bs=wrap.querySelectorAll('.plateb');
+    if(!IMG||!bs.length){wrap.classList.remove('withpic');wrap.style.removeProperty('--pic');return}
+    wrap.classList.add('withpic'); wrap.style.setProperty('--pic','url("'+IMG.url+'")');
+    var rs=[].map.call(bs,function(b){return b.getBoundingClientRect()});
+    var minL=Math.min.apply(null,rs.map(function(r){return r.left})), maxR=Math.max.apply(null,rs.map(function(r){return r.right}));
+    var top0=rs[0].top, BW=maxR-minL, BH=rs[rs.length-1].bottom-top0;
+    var sc=Math.max(BW/IMG.w,BH/IMG.h)*IMG.sc, iw=IMG.w*sc, ih=IMG.h*sc, ox=(BW-iw)/2+IMG.dx*BW, oy=(BH-ih)/2+IMG.dy*BH;
+    bs.forEach(function(b,i){var r=rs[i]; b.style.backgroundSize=iw+'px '+ih+'px'; b.style.backgroundPosition=(ox-(r.left-minL))+'px '+(oy-(r.top-top0))+'px'});
+  }
+  function renderPanel(){
+    var ids=idxs(), n=S.plates.length, txt;
+    if(!ids.length) txt='دوس على بلاطة عشان تعدلها';
+    else if(ids.length===n) txt='المحدد: كل البلاطات ('+n+')';
+    else if(ids.length===1) txt='المحدد: بلاطة رقم '+(ids[0]+1);
+    else txt='المحدد: '+ids.length+' بلاطات ('+ids.slice(0,6).map(function(i){return i+1}).join('، ')+(ids.length>6?'…':'')+')';
+    $('psel').textContent=txt;
+    ['w','t'].forEach(function(k){
+      var inp=$(k==='w'?'iw':'it'), vals=ids.map(function(i){return S.plates[i][k]});
+      var allSet=vals.length&&vals.every(function(v){return v!=null});
+      var uniq=vals.filter(function(v,i){return vals.indexOf(v)===i});
+      inp.value=(allSet&&uniq.length===1)?fmt(vals[0]):'';
+      inp.placeholder=!ids.length?'—':(vals.every(function(v){return v==null})?fmt(DEF[k]):'مختلف');
+      inp.disabled=!ids.length;
+    });
+    document.querySelectorAll('#panel .sb').forEach(function(b){b.disabled=!ids.length});
+  }
+  function body(m){return withM(m,function(){
+    var n=S.plates.length, rs=runs(), L=[];
+    L.push('عدد البلاطات: '+n);
+    if(rs.length===1){
+      L.push('كل البلاطات: عرض '+fmt(rs[0].w)+' سم × سمك '+fmt(rs[0].t)+' سم');
+    } else {
+      rs.forEach(function(r){
+        var c=r.to-r.from+1;
+        var lab=r.from===r.to?('بلاطة '+r.from):('البلاطات من '+r.from+' إلى '+r.to+' ('+(c===2?'بلاطتين':c+' '+pw(c))+')');
+        L.push('- '+lab+' ('+posWord(r,n)+'): عرض '+fmt(r.w)+' سم × سمك '+fmt(r.t)+' سم');
+      });
+    }
+    var tot=0; S.plates.forEach(function(p){tot+=p.t});
+    L.push('مجموع السمك: '+fmt(tot)+' سم');
+    return L;
+  })}
+  function buildAll(){
+    T=sumQty(-1);
+    var L=['أهلاً RIVET، دي مقاسات '+(T>1?('طلب '+(T===2?'جهازين':T+' أجهزة')):'جهازي')+' (الترقيم من فوق لتحت):'];
+    var nm=$('bname').value.trim(); if(nm) L.push('الاسم: '+nm);
+    if(machines.length===1&&machines[0].qty>1) L.push('عدد الأجهزة بنفس المقاسات: '+machines[0].qty);
+    machines.forEach(function(m,i){
+      if(machines.length>1) L.push('== جهاز '+(i+1)+(m.qty>1?' ('+(m.qty===2?'جهازين':m.qty+' أجهزة')+' بنفس المقاسات دي)':'')+' ==');
+      body(m).forEach(function(x){L.push(x)});
+      if(IMG&&i===machines.length-1) L.push('معايا صورة عايز أجربها أو أطبعها، وهبعتها في المحادثة.');
+    });
+    L.push('هبعت صورة الجهاز بعد الرسالة دي.');
+    return L.join('\n');
+  }
+  function complete(m){return m.started&&m.plates.length>0&&m.plates.every(isSet)}
+  function orderOk(){return remaining()===0&&machines.every(complete)}
+  function renderTabs(){
+    var box=$('mtabs'), h='';
+    machines.forEach(function(m,i){h+='<button type="button" data-m="'+i+'" aria-pressed="'+(i===cur?'true':'false')+'">جهاز '+(i+1)+(complete(m)?' ✓':'')+(m.qty>1?' ×'+m.qty:'')+'</button>'});
+    h+='<button type="button" class="add2" data-add="1">+ جهاز بمقاس مختلف</button>';
+    var tot=sumQty(-1); if(tot>1) h+='<span class="rem">إجمالي الأجهزة: '+tot+'</span>';
+    box.innerHTML=h;
+  }
+  function renderQty(){
+    $('qn').textContent=S.qty; $('rmM').classList.toggle('hide',machines.length<2);
+  }
+  function updateOrder(){
+    var ok=orderOk(), msg=ok?buildAll():'';
+    $('bprev').textContent=msg;
+    $('bsend').href=ok?('https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg)):('https://wa.me/'+PHONE);
+    renderTabs(); renderQty();
+  }
+  function switchTo(i){
+    cur=i; S=machines[i]; $('bcount').value=S.plates.length||10;
+    $('bbuild').classList.toggle('hide',!S.started); $('bstart').classList.toggle('hide',S.started); $('callout').classList.toggle('hide',S.started);
+    $('multi').setAttribute('aria-pressed',S.multi?'true':'false');
+    if(S.started) render(); else updateOrder();
+  }
+
+  function renderSummary(){
+    var n=S.plates.length, rs=runs(), uns=S.plates.filter(function(p){return !isSet(p)}).length, h='';
+    rs.forEach(function(r){
+      var c=r.to-r.from+1;
+      if(r.w==null||r.t==null){
+        h+='<li class="warn"><span>'+rangeLabel(r)+'</span><span>لسه ما اتحددش</span></li>';
+      } else {
+        h+='<li><span>'+rangeLabel(r)+(rs.length>1?' ('+posWord(r,n)+')':'')+' · '+c+'</span><span class="v">'+fmt(r.w)+' × '+fmt(r.t)+'</span></li>';
+      }
+    });
+    $('sumlist').innerHTML=h;
+    if(uns){ $('sumtot').textContent='في '+uns+' بلاطات لسه مقاسها ما اتحددش، اظبط عرضها وسمكها قبل ما تبعت.'; }
+    else { var tot=0; S.plates.forEach(function(p){tot+=p.t}); $('sumtot').textContent='مجموع سمك البلاطات: '+fmt(tot)+' سم (راجعه مع ارتفاع جهازك لو حابب تتأكد).'; }
+    updateOrder();
+  }
+
+  function render(){renderStack();renderPanel();renderSummary()}
+
+  function adjust(k,delta){
+    var ids=idxs(); if(!ids.length) return;
+    ids.forEach(function(i){var p=S.plates[i], base=p[k]==null?DEF[k]:p[k]; p[k]=clampK(k,base+delta)});
+    render();
+  }
+  function setVal(k,raw){
+    var v=parseFloat(norm(raw)); if(!(v>0)){renderPanel();return}
+    idxs().forEach(function(i){S.plates[i][k]=clampK(k,v)}); render();
+  }
+
+  function setCount(n){
+    n=Math.min(MAXN,Math.max(1,n)); $('bcount').value=n;
+    if(!S.started) return;
+    var last=S.plates[S.plates.length-1]||{w:null,t:null};
+    while(S.plates.length<n) S.plates.push({w:last.w,t:last.t});
+    S.plates.length=n;
+    Object.keys(S.sel).forEach(function(i){if(+i>=n) delete S.sel[i]});
+    if(!idxs().length) selectAll();
+    render();
+  }
+
+  function start(){
+    var n=readCount();
+    if(n<1||n>MAXN){$('e-b').textContent='اكتب عدد من 1 لـ '+MAXN;return}
+    $('e-b').textContent='';
+    S.plates=[]; for(var i=0;i<n;i++) S.plates.push({w:null,t:null});
+    S.started=true; selectAll();
+    $('bbuild').classList.remove('hide'); $('bstart').classList.add('hide'); $('callout').classList.add('hide');
+    render();
+    $('stack').scrollIntoView({block:'nearest'});
+  }
+
+  // events
+  $('bstart').addEventListener('click',start);
+  $('bcount').addEventListener('change',function(){var n=readCount(); if(n<1){n=1} setCount(n)});
+  document.querySelectorAll('.cb').forEach(function(b){b.addEventListener('click',function(){
+    var n=(readCount()||0)+parseInt(b.getAttribute('data-c'),10); setCount(n);
+  })});
+
+  $('stack').addEventListener('click',function(e){
+    var b=e.target.closest('.plateb'); if(!b) return;
+    var i=parseInt(b.getAttribute('data-i'),10);
+    if(S.multi){ if(S.sel[i]) delete S.sel[i]; else S.sel[i]=true; }
+    else { S.sel={}; S.sel[i]=true; }
+    renderStack(); renderPanel();
+  });
+
+  var timer=null, iv=null;
+  function stopHold(){clearTimeout(timer);clearInterval(iv);timer=iv=null}
+  $('panel').addEventListener('pointerdown',function(e){
+    var b=e.target.closest('.sb'); if(!b||b.disabled) return;
+    e.preventDefault();
+    var k=b.getAttribute('data-k'), d=parseInt(b.getAttribute('data-d'),10);
+    adjust(k,d*STEP[k]); stopHold();
+    timer=setTimeout(function(){iv=setInterval(function(){adjust(k,d*STEP[k])},90)},420);
+  });
+  ['pointerup','pointercancel'].forEach(function(ev){document.addEventListener(ev,stopHold)});
+  window.addEventListener('blur',stopHold);
+  $('panel').addEventListener('click',function(e){
+    var b=e.target.closest('.sb');
+    if(b&&e.detail===0){adjust(b.getAttribute('data-k'),parseInt(b.getAttribute('data-d'),10)*STEP[b.getAttribute('data-k')])}
+  });
+  $('iw').addEventListener('change',function(){setVal('w',$('iw').value)});
+  $('it').addEventListener('change',function(){setVal('t',$('it').value)});
+
+  $('selall').addEventListener('click',function(){selectAll();renderStack();renderPanel()});
+  $('multi').addEventListener('click',function(){
+    S.multi=!S.multi; $('multi').setAttribute('aria-pressed',S.multi?'true':'false');
+  });
+  $('rgo').addEventListener('click',function(){
+    var n=S.plates.length, a=parseInt(norm($('rfrom').value),10), b=parseInt(norm($('rto').value),10);
+    if(isNaN(a)||isNaN(b)) return;
+    a=Math.min(n,Math.max(1,a)); b=Math.min(n,Math.max(1,b)); if(a>b){var x=a;a=b;b=x}
+    if(!S.multi) S.sel={};
+    for(var i=a-1;i<b;i++) S.sel[i]=true;
+    renderStack(); renderPanel();
+  });
+  $('bname').addEventListener('input',function(){updateOrder()});
+
+  $('bsend').addEventListener('click',function(e){
+    if(!orderOk()){
+      e.preventDefault();
+      var bad=-1; machines.forEach(function(m,i){if(bad<0&&!complete(m)) bad=i});
+      $('e-ball').textContent=remaining()>0?('لسه فاضل '+remaining()+' جهاز ما اتحددش، دوس على (+ جهاز بمقاسات تانية) أو زوّد عدد الأجهزة المتشابهة.'):(bad>=0?('جهاز '+(bad+1)+' لسه ما اتكملش.'):'ابدأ برسم الجهاز الأول.');
+      return;
+    }
+    $('e-ball').textContent='';
+  });
+  $('breset').addEventListener('click',function(){
+    machines[cur]=S=newM(); $('e-ball').textContent=''; switchTo(cur);
+  });
+  $('mtabs').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    if(b.getAttribute('data-add')){machines.push(newM()); switchTo(machines.length-1); $('bcount').focus(); return}
+    var m=b.getAttribute('data-m'); if(m!==null) switchTo(parseInt(m,10));
+  });
+  document.querySelectorAll('.sb2').forEach(function(b){b.addEventListener('click',function(){
+    S.qty=Math.min(20,Math.max(1,S.qty+parseInt(b.getAttribute('data-q'),10))); updateOrder();
+  })});
+  $('rmM').addEventListener('click',function(){
+    if(machines.length<2) return; machines.splice(cur,1); cur=Math.max(0,cur-1); switchTo(cur);
+  });
+
+  var pic=$('pic');
+  $('picbtn').addEventListener('click',function(){pic.click()});
+  pic.addEventListener('change',function(){
+    var f=pic.files&&pic.files[0]; pic.value=''; if(!f) return;
+    $('e-pic').textContent='';
+    if(!/^image\//.test(f.type)){$('e-pic').textContent='اختار صورة (JPG أو PNG).';return}
+    if(f.size>15*1024*1024){$('e-pic').textContent='الصورة كبيرة، اختار صورة أصغر من 15 ميجا.';return}
+    var fr=new FileReader();
+    fr.onerror=function(){$('e-pic').textContent='معرفتش أقرا الصورة، جرّب صورة تانية.'};
+    fr.onload=function(){
+      var im=new Image();
+      im.onerror=function(){$('e-pic').textContent='نوع الصورة مش مدعوم، جرّب JPG أو PNG.'};
+      im.onload=function(){
+        var m=Math.min(1,1000/Math.max(im.width,im.height)), w=Math.round(im.width*m), h=Math.round(im.height*m);
+        var c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(im,0,0,w,h);
+        IMG={url:c.toDataURL('image/jpeg',0.85),w:w,h:h,sc:1,dx:0,dy:0}; $('picctl').classList.remove('hide');
+        $('picx').classList.remove('hide'); $('picnote').classList.remove('hide'); $('picbtn').textContent='غيّر الصورة';
+        applyImg(); updateOrder();
+      };
+      im.src=fr.result;
+    };
+    fr.readAsDataURL(f);
+  });
+  $('picx').addEventListener('click',function(){IMG=null;$('picctl').classList.add('hide');$('picx').classList.add('hide');$('picnote').classList.add('hide');$('picbtn').textContent='جرّب صورتك على الجهاز';applyImg();updateOrder()});
+  $('picctl').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b||!IMG) return; var k=b.getAttribute('data-p');
+    if(k==='zi') IMG.sc=Math.min(4,IMG.sc*1.1); else if(k==='zo') IMG.sc=Math.max(0.2,IMG.sc/1.1);
+    else if(k==='up') IMG.dy-=0.05; else if(k==='dn') IMG.dy+=0.05; else if(k==='lf') IMG.dx-=0.05; else if(k==='rt') IMG.dx+=0.05;
+    else if(k==='rs'){IMG.sc=1;IMG.dx=0;IMG.dy=0}
+    applyImg();
+  });
+  window.addEventListener('resize',applyImg);
+  updateOrder();
+
+  // tabs
+  function tab(which){
+    var b=which==='b';
+    $('pane-b').classList.toggle('hide',!b); $('pane-f').classList.toggle('hide',b);
+    $('tab-b').setAttribute('aria-selected',b?'true':'false'); $('tab-f').setAttribute('aria-selected',b?'false':'true');
+  }
+  $('tab-b').addEventListener('click',function(){tab('b')});
+  $('tab-f').addEventListener('click',function(){tab('f')});
+})();
+</script>
+
+</body>
+</html>
